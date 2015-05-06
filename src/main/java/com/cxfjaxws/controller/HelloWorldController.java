@@ -16,6 +16,7 @@ import com.cxfjaxws.EmployeeRequest;
 import com.cxfjaxws.EmployeeResponse;
 import com.cxfjaxws.HelloWorld;
 import com.cxfjaxws.ObjectFactory;
+import com.cxfjaxws.vo.EmployeeVo;
 
 @Controller
 public class HelloWorldController {
@@ -26,18 +27,19 @@ public class HelloWorldController {
 	@Qualifier("helloWorldClient")
 	private HelloWorld helloWorldClient;
 
-	@RequestMapping(value = "/sayHi", method = RequestMethod.GET)
-	public @ResponseBody EmployeeResponse getEmployee(@RequestParam("id") BigInteger id) {
+	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
+	public @ResponseBody String getEmployee(@RequestParam("id") BigInteger id) {
 		logger.info("getEmployee starts");
 		ObjectFactory objectFactory = new ObjectFactory();
 		EmployeeRequest employeeRequest = objectFactory.createEmployeeRequest();
 		employeeRequest.setId(id);
 		EmployeeResponse employee = helloWorldClient.getEmployee(employeeRequest);
 		logger.info("##################");
-		logger.info("employee :: "+employee);
+		EmployeeVo employeeVo = new EmployeeVo(employee.getId(),employee.getFirstname(),employee.getLastname());
+		logger.info("employeeVo :: "+employeeVo);
 		logger.info("##################");
 		logger.info("getEmployee ends");
-		return employee;
+		return employeeVo.toString();
 	}
 
 }

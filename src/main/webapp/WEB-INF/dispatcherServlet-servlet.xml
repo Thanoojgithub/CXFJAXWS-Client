@@ -2,14 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans  
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-3.0.xsd
-	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 
-	<context:annotation-config />
+	<mvc:annotation-driven />
 	<context:component-scan base-package="com.cxfjaxws" />
 	<jaxws:client id="helloWorldClient" serviceClass="com.cxfjaxws.HelloWorld"
 		address="http://localhost:8080/CXFJAXWS-Service-1.0/helloworld?wsdl" />
