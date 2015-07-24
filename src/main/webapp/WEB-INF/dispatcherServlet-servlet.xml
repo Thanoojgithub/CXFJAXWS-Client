@@ -14,6 +14,22 @@
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.cxfjaxws" />
-	<jaxws:client id="helloWorldClient" serviceClass="com.cxfjaxws.HelloWorld"
-		address="http://localhost:8080/CXFJAXWS-Service-1.0/helloworld?wsdl" />
+	<mvc:resources mapping="/static/**" location="/resources/" />
+
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
+	</bean>
+
+	<bean id="SpringTemplateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="SpringTemplateEngine" />
+	</bean>
+
+	<jaxws:client id="helloWorldClient" serviceClass="com.cxfjaxws.HelloWorldPortType"
+		address="http://localhost:9090/CXFJAXWS-Service-1.0/helloworld?wsdl" />
 </beans>

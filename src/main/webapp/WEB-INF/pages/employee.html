@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Employee Details</title>
+<!-- Latest compiled and minified CSS -->
+<link th:href='${"static/css/bootstrap.min.css"}' rel="stylesheet" />
+
+</head>
+<body>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Employee Details</div>
+		<div>
+			<table class="table table-hover table-bordered table-nonfluid">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="employeeVo : ${employeeVos}">
+						<td th:text="${employeeVo.id}">Onions</td>
+						<td th:text="${employeeVo.firstName}">2.41</td>
+						<td th:text="${employeeVo.lastName}">yes</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script th:src='${"static/js/jquery-2.1.3.min.js"}'></script>
+	<script th:src='${"static/js/customers.js"}'></script>
+
+</body>
+</html>

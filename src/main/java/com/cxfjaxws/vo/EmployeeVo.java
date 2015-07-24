@@ -1,18 +1,21 @@
 package com.cxfjaxws.vo;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public class EmployeeVo {
+public class EmployeeVo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	protected BigInteger id;
-	protected String firstname;
-	protected String lastname;
+	protected String firstName;
+	protected String lastName;
 
-	public EmployeeVo(BigInteger id, String firstname, String lastname) {
+	public EmployeeVo(BigInteger id, String firstName, String lastName) {
 		super();
 		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 	public BigInteger getId() {
@@ -23,26 +26,25 @@ public class EmployeeVo {
 		this.id = id;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	@Override
 	public String toString() {
-		return "EmployeeVo [id=" + id + ", firstname=" + firstname
-				+ ", lastname=" + lastname + "]";
+		return "EmployeeVo [id=" + id + ", firstName=" + firstName
+				+ ", lastName=" + lastName + "]";
 	}
-
 }
